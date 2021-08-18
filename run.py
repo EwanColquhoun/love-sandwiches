@@ -39,10 +39,10 @@ def get_sales_data():
 def validate_data(values):
     """
     Inside the try, converts all string values into integers.
-    Raises ValueError if strings cannot be converted into int, 
+    Raises ValueError if strings cannot be converted into int,
     or if there aren't exactly 6 values.
     """
-    
+
     try:
         [int(value) for value in values]
         if len(values) != 6:
@@ -84,23 +84,23 @@ def calculate_surplus_data(sales_row):
     for stock, sales in zip(stock_row, sales_row):
         surplus = int(stock) - sales
         surplus_data.append(surplus)
-    
+
     return surplus_data
 
 
 def get_last_5_entries_sales():
     """
     Collects column of data from sales worksheet, collecting
-    the last 5 entries for each sandwich and returns the data 
+    the last 5 entries for each sandwich and returns the data
     as a list of lists.
     """
     sales = SHEET.worksheet('sales')
-    
+
     columns = []
     for ind in range(1, 7):
         column = sales.col_values(ind)
         columns.append(column[-5:])
-    
+
     return columns
 
 
